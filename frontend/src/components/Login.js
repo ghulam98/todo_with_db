@@ -8,9 +8,9 @@ function Login() {
     const submit = async (e)=>{
         e.preventDefault()
         try{
-            console.log(cred, "data")
+            console.log(cred, "data",process.env.REACT_APP_API_URI)
 
-            const response = await fetch(`http://localhost:3000/api/auth/login`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URI}/api/auth/login`, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 headers: {
                   'Content-Type': 'application/json',

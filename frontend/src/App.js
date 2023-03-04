@@ -12,7 +12,7 @@ function App() {
   const getAllTodo = async()=>{
     try{
 
-      const response = await fetch(`http://localhost:3000/api/todo/fetchalltodo`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URI}/api/todo/fetchalltodo`, {
           method: 'GET', // *GET, POST, PUT, DELETE, etc.
           headers: {
             'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function App() {
   const addTask = async(data)=>{
     try{
 
-      const response = await fetch(`http://localhost:3000/api/todo/addtodo`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URI}/api/todo/addtodo`, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           headers: {
             'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ function App() {
   const checkboxUpdate = async(data)=>{
     try{
 
-      const response = await fetch(`http://localhost:3000/api/todo/updatetodo/${data._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URI}/api/todo/updatetodo/${data._id}`, {
           method: 'PUT', // *GET, POST, PUT, DELETE, etc.
           headers: {
             'Content-Type': 'application/json',
