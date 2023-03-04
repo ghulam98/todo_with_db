@@ -2,7 +2,7 @@ const express = require('express')
 var cors = require('cors')
 const CONN = require('./db')
 const app = express()
-const PORT = 3000
+require('dotenv').config()
 
 //stablishing DB connection
 CONN()
@@ -16,6 +16,6 @@ app.get('/',(req,res)=>{
 
 
 
-app.listen(PORT,()=>{
-    console.log(`Server is running on prot=${PORT}`)
+app.listen(process.env.PORT,()=>{
+    console.log(`Server is running on prot=${process.env.PORT}`)
 })

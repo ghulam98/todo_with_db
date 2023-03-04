@@ -24,11 +24,11 @@ function Login() {
                if(data.success){
                 //save token in local 
                 localStorage.setItem('token', data.token)
-                nevigate("/")
-                console.log("Login successfully!", "success")
-               }
-               else{
-                console.log("Login failed as credantial is not correct!", "danger")
+                localStorage.setItem('user_id', data.user_id)
+                nevigate("/todo")
+            }
+            else{
+                alert("Login failed as credantial is not correct!")
                }
         }catch(e){
             console.log("connectionm refused server down"+e.message, "danger")
@@ -38,7 +38,6 @@ function Login() {
 
     const onChange = (e)=>{
         setCred({...cred, [e.target.name]:e.target.value})
-        console.log(cred)
     }
   return (
     <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
@@ -79,11 +78,7 @@ function Login() {
       {/* <!-- 2 column grid layout --> */}
       <div className="row mb-4">
         <div className="col-md-6 d-flex justify-content-center">
-          {/* <!-- Checkbox --> */}
-          <div className="form-check mb-3 mb-md-0">
-            <input className="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-            <label className="form-check-label" htmlFor="loginCheck"> Remember me </label>
-          </div>
+      
         </div>
 
         <div className="col-md-6 d-flex justify-content-center">

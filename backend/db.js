@@ -3,7 +3,7 @@ mongoose.set("strictQuery", false);
 
 
 const CONN = ()=>{
-mongoose.connect('mongodb://127.0.0.1:27017/todo')
+mongoose.connect(`${process.env.BASE_URL}/${process.env.DB}`)
 .then(()=>{
     console.log("connection ok")
 }).catch((err)=>{

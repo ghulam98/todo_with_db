@@ -9,7 +9,7 @@ const getUser = (req, res, next) => {
         res.status(401).send({ error: "Please authenticate using a valid token" })
     }
     try {
-        const data = jwt.verify(token, "JWT_SECRET");
+        const data = jwt.verify(token, process.env.SECRET_KEY);
         req.user = data;
         console.log(data,"kkk")
         next();

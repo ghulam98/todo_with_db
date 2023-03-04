@@ -14,7 +14,17 @@ const todoSchema = new Schema({
             type:String,
             required:true,
         },
+        category:{
+            type:String,
+            required:true,
+            default:'normal'
+        },
         status:{
+            type:Boolean,
+            required:true,
+            default:false
+        },
+        delete:{
             type:Boolean,
             required:true,
             default:false

@@ -30,16 +30,16 @@ router.post('/addtodo', getUser, [
     //for validation
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success: false,errors: errors.array() });
     }
 
     try {
-       const {title, desc} = req.body
+       const {title, desc,category} = req.body
         const todo = new Todo({
-            title, desc, user:req.user.userId
+            title, desc, user:req.user.userId,category
         })
         const savedtodo = await todo.save()
-        res.status(200).json(savedtodo)
+        res.status(200).json({success:true,...savedtodo._doc})
     } catch (error) {
         res.status(500).json({msg:"Internal Server Error",error:error.message})
     }

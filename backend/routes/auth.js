@@ -76,9 +76,9 @@ router.post("/login",    [
 
         //generating token using JWT
         const data = {"userId":user.id, email:user.email}
-        const token = jwt.sign(data, "JWT_SECRET");
+        const token = jwt.sign(data, process.env.SECRET_KEY);
         success = true
-        return res.status(200).json({success,token, msg:"user login successfully!"})
+        return res.status(200).json({success,token,user_id:user.email, msg:"user login successfully!"})
     } catch (error) {
         console.log(error)
         res.status(500).json({success, msg:error})
